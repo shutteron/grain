@@ -3,6 +3,8 @@ import CategoryCard from '@/components/CategoryCard';
 import LessonCard from '@/components/LessonCard';
 import { getAllLessons } from '@/lib/lessons';
 
+export const dynamic = 'force-dynamic';
+
 const categories = [
   {
     href: '/terms',
