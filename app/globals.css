@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Design tokens ── */
+@theme {
+  --color-g-bg:      #F8F7F4;
+  --color-g-card:    #FFFFFF;
+  --color-g-text:    #1F1F1F;
+  --color-g-muted:   #6B6B6B;
+  --color-g-faint:   #9E9E9E;
+  --color-g-border:  #E5E0D8;
+  --color-g-accent:  #8A6F4D;
+  --color-g-accent2: #6B5337;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Base ── */
+body {
+  background-color: #F8F7F4;
+  color: #1F1F1F;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.015em;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── Card hover — PC で浮く ── */
+.lesson-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+@media (hover: hover) {
+  .lesson-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(31, 31, 31, 0.09);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.category-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+@media (hover: hover) {
+  .category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(31, 31, 31, 0.07);
+  }
+}
+
+/* ── Lesson body ── */
+.lesson-body p + p {
+  margin-top: 1.1rem;
 }
