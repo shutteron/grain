@@ -90,12 +90,13 @@ export default function NavBar() {
             <Link
               key={item.href}
               href={item.href}
-              className="flex-1 flex flex-col items-center py-3 gap-0.5"
+              className="flex-1 flex flex-col items-center py-3 gap-0.5 transition-colors"
+              style={{
+                borderBottom: active ? '2px solid #8A6F4D' : '2px solid transparent',
+                color: active ? '#8A6F4D' : '#B0A898',
+              }}
             >
-              <div
-                className="transition-colors"
-                style={{ color: active ? '#8A6F4D' : '#B0A898' }}
-              >
+              <div className="transition-colors">
                 {item.icon(active ? '#8A6F4D' : '#B0A898')}
               </div>
               <span
