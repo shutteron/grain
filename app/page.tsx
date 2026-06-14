@@ -50,7 +50,8 @@ const categories = [
 
 export default function Home() {
   const all = getAllLessons();
-  const pickup = [all[0], all[8], all[18]];
+  const shuffled = [...all].sort(() => Math.random() - 0.5);
+  const pickup = shuffled.slice(0, 3);
 
   return (
     <div className="flex flex-col gap-10 pb-4">
