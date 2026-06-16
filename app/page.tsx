@@ -104,9 +104,9 @@ export default function Home() {
                 className="text-[13px] leading-relaxed"
                 style={{ color: '#171717', lineHeight: '1.8' }}
               >
-                一枚の写真は、<br />
-                設定ではなく、<br />
-                「何を見せたいか」から始まる。
+                F値、露出、ピント、逆光。<br />
+                分からない言葉や撮影の失敗を、<br />
+                検索して学べます。
               </p>
             </div>
           </div>
@@ -149,6 +149,28 @@ export default function Home() {
       {/* ── 検索 ── */}
       <div className="px-5">
         <SearchBar />
+        <p
+          className="text-[12px] leading-relaxed mt-3 mb-3"
+          style={{ color: '#8B8270' }}
+        >
+          F値、露出、ピント、白い服、ストロボなどで検索できます。
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {['F値', '露出', 'ピント', '逆光', 'ストロボ', '白い服'].map((term) => (
+            <a
+              key={term}
+              href={`/search?q=${encodeURIComponent(term)}`}
+              className="inline-block px-3 py-1.5 rounded-full text-[11px] font-medium transition-all active:scale-95"
+              style={{
+                background: '#F0EDE5',
+                color: '#7A7168',
+                border: '1px solid #DDD4C6',
+              }}
+            >
+              {term}
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* ── こんな時に見る ── */}
