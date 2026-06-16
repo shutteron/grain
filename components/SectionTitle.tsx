@@ -7,13 +7,13 @@ export default function SectionTitle({ children, sub }: SectionTitleProps) {
   return (
     <div className="mb-7">
       <h1
-        className="text-2xl font-black tracking-tight leading-tight"
-        style={{ color: '#1F1F1F' }}
+        className="text-2xl font-bold tracking-tight leading-tight"
+        style={{ color: '#171717' }}
       >
         {children}
       </h1>
       {sub && (
-        <p className="text-[11px] font-medium mt-1" style={{ color: '#9E9E9E' }}>
+        <p className="text-[11px] font-medium mt-1.5" style={{ color: '#7A7168' }}>
           {sub}
         </p>
       )}

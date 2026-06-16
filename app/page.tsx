@@ -58,72 +58,68 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-10 pb-4">
 
-      {/* ── ビジュアルヘッダー ── */}
-      <div
-        className="relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(150deg, #1C1208 0%, #3A2210 32%, #7A5530 62%, #C89A60 85%, #E8D0A0 100%)',
-          minHeight: '260px',
-        }}
-      >
-        {/* 光のグラデーション（半逆光）*/}
+      {/* ── ギャラリー風ヒーロー ── */}
+      <div className="px-5 pt-2">
         <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(ellipse at 88% 55%, rgba(240,200,130,0.35) 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(26,16,6,0.6) 0%, transparent 70%)',
-          }}
-        />
-        {/* グレイン質感 */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")',
-          }}
-        />
-        {/* 細い枠 */}
-        <div
-          className="absolute top-5 left-5 right-5 bottom-5 pointer-events-none"
-          style={{ border: '1px solid rgba(255,255,255,0.08)', borderRadius: '6px' }}
-        />
+          className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch"
+          style={{ borderTop: '1px solid #DDD4C6', paddingTop: '32px' }}
+        >
+          {/* テキスト領域 */}
+          <div className="flex flex-col gap-6 flex-1 md:py-2">
+            <div>
+              <p
+                className="text-[8px] font-bold tracking-[0.2em] uppercase mb-2"
+                style={{ color: '#7A7168' }}
+              >
+                Photography Textbook
+              </p>
+              <h1
+                className="font-black tracking-tight leading-tight mb-4"
+                style={{ fontSize: '2.6rem', color: '#171717' }}
+              >
+                GRAIN
+              </h1>
+              <p
+                className="text-[14px] font-medium leading-relaxed"
+                style={{ color: '#7A7168' }}
+              >
+                写真の知識を、感覚に変える。
+              </p>
+            </div>
 
-        {/* テキストコンテンツ */}
-        <div className="relative px-7 pt-12 pb-10 flex flex-col gap-0">
-          <p
-            className="text-[9px] font-bold tracking-[0.22em] uppercase mb-3"
-            style={{ color: 'rgba(255,255,255,0.35)' }}
-          >
-            Photography Textbook
-          </p>
-          <h1
-            className="font-black tracking-tight leading-none mb-3"
-            style={{ fontSize: '2.2rem', color: 'rgba(255,255,255,0.92)' }}
-          >
-            GRAIN
-          </h1>
-          <p
-            className="text-[13px] font-medium leading-relaxed"
-            style={{ color: 'rgba(220,185,130,0.85)' }}
-          >
-            写真の知識を、感覚に変える。
-          </p>
+            {/* 補助コピー */}
+            <div
+              className="pt-4"
+              style={{ borderTop: '1px solid #DDD4C6' }}
+            >
+              <p
+                className="text-[13px] leading-relaxed"
+                style={{ color: '#171717', lineHeight: '1.8' }}
+              >
+                一枚の写真は、<br />
+                設定ではなく、<br />
+                「何を見せたいか」から始まる。
+              </p>
+            </div>
+          </div>
 
-          {/* 区切り */}
+          {/* 画像領域（プレースホルダー） */}
           <div
-            className="mt-8 mb-0"
+            className="flex-1 rounded-md overflow-hidden md:min-h-[360px] min-h-[240px]"
             style={{
-              width: '32px',
-              height: '1px',
-              background: 'rgba(255,255,255,0.2)',
+              background: 'linear-gradient(135deg, #2A2420 0%, #3D3431 100%)',
+              border: '1px solid #DDD4C6',
             }}
-          />
-          <p
-            className="mt-3 text-[11px] leading-relaxed"
-            style={{ color: 'rgba(255,255,255,0.4)' }}
           >
-            光を読む目が育てば、<br />写真は変わる。
-          </p>
+            {/* グレイン質感 */}
+            <div
+              className="w-full h-full opacity-[0.04]"
+              style={{
+                backgroundImage:
+                  'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")',
+              }}
+            />
+          </div>
         </div>
       </div>
 
@@ -132,35 +128,35 @@ export default function Home() {
         <SearchBar />
       </div>
 
-      {/* ── カテゴリ ── */}
-      <div className="px-5">
+      {/* ── カテゴリ（目次風） ── */}
+      <div className="px-5 pb-2">
         <p
           className="text-[10px] font-bold tracking-[0.15em] uppercase mb-4"
-          style={{ color: '#9E9E9E' }}
+          style={{ color: '#7A7168', letterSpacing: '0.12em' }}
         >
-          今日、何を知りたいですか？
+          知りたいことから探す
         </p>
         <div className="flex flex-col gap-2">
-          {categories.map((c) => (
-            <CategoryCard key={c.href} {...c} />
+          {categories.map((c, i) => (
+            <CategoryCard key={c.href} {...c} index={i + 1} />
           ))}
         </div>
       </div>
 
       {/* ── ピックアップ ── */}
-      <div className="px-5">
+      <div className="px-5 pb-2">
         <div
           className="flex items-center gap-3 mb-4"
-          style={{ borderBottom: '1px solid #E5E0D8', paddingBottom: '12px' }}
+          style={{ borderBottom: '1px solid #DDD4C6', paddingBottom: '12px' }}
         >
           <p
             className="text-[10px] font-bold tracking-[0.15em] uppercase"
-            style={{ color: '#9E9E9E' }}
+            style={{ color: '#7A7168' }}
           >
-            まず、写真の見方を変える
+            ここから始める
           </p>
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2.5">
           {pickup.map((l) => (
             <LessonCard key={l.id} lesson={l} />
           ))}
@@ -169,7 +165,7 @@ export default function Home() {
 
       <p
         className="text-center text-[10px] pb-2"
-        style={{ color: '#C4B8A8' }}
+        style={{ color: '#A9A093' }}
       >
         全 {all.length} 教材
       </p>

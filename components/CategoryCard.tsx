@@ -5,38 +5,37 @@ type CategoryCardProps = {
   en: string;
   label: string;
   desc: string;
+  index?: number;
 };
 
-export default function CategoryCard({ href, en, label, desc }: CategoryCardProps) {
+export default function CategoryCard({ href, en, label, desc, index }: CategoryCardProps) {
   return (
     <Link
       href={href}
-      className="category-card flex items-center justify-between gap-4 px-4 py-4 rounded-[14px] active:opacity-60"
-      style={{ background: '#FFFFFF', border: '1px solid #E5E0D8' }}
+      className="category-card flex items-start justify-between gap-6 px-4 py-5 rounded-md active:opacity-60"
+      style={{
+        background: '#FFFDF8',
+        border: '1px solid #DDD4C6',
+        transition: 'all 0.15s ease',
+      }}
     >
       <div className="flex-1 min-w-0">
-        {/* 英字ラベル */}
+        {/* 番号 / 英字ラベル */}
         <p
-          className="text-[9px] font-bold tracking-[0.18em] uppercase mb-1"
-          style={{ color: '#C4B8A8' }}
+          className="text-[9px] font-bold tracking-[0.16em] uppercase mb-2"
+          style={{ color: '#7A7168' }}
         >
-          {en}
+          {index !== undefined ? `${String(index).padStart(2, '0')} / ${en}` : en}
         </p>
         {/* 日本語タイトル */}
-        <p className="font-semibold text-[14px] leading-snug" style={{ color: '#1F1F1F' }}>
+        <p className="font-semibold text-[13px] leading-snug mb-1" style={{ color: '#171717' }}>
           {label}
         </p>
         {/* 説明 */}
-        <p className="text-[11px] mt-0.5 leading-snug" style={{ color: '#A09888' }}>
+        <p className="text-[11px] leading-relaxed" style={{ color: '#8B8270' }}>
           {desc}
         </p>
       </div>
-      <span
-        className="shrink-0 text-[12px] font-light"
-        style={{ color: '#C4B8A8' }}
-      >
-        →
-      </span>
     </Link>
   );
 }

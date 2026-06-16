@@ -28,17 +28,17 @@ export default function SearchBar({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
-        className="flex-1 rounded-xl px-4 py-3 text-sm outline-none"
+        className="flex-1 rounded-sm px-4 py-3 text-sm outline-none transition-colors"
         style={{
-          background: '#FFFFFF',
-          border: '1px solid #E5E0D8',
-          color: '#1F1F1F',
+          background: '#FFFDF8',
+          border: '1px solid #DDD4C6',
+          color: '#171717',
         }}
       />
       <button
         type="submit"
-        className="rounded-xl px-5 py-3 text-sm font-semibold text-white transition-opacity active:opacity-70"
-        style={{ background: '#8A6F4D' }}
+        className="rounded-sm px-5 py-3 text-sm font-semibold text-white transition-opacity active:opacity-70"
+        style={{ background: '#6F4E2E' }}
       >
         検索
       </button>

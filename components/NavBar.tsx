@@ -75,12 +75,15 @@ export default function NavBar() {
   return (
     <nav
       className="fixed bottom-0 left-0 right-0 z-50"
-      style={{ borderTop: '1px solid #E5E0D8' }}
+      style={{ borderTop: '1px solid #DDD4C6', backdropFilter: 'blur(4px)' }}
     >
       {/* PCでも中央寄せ */}
       <div
         className="max-w-[480px] mx-auto flex"
-        style={{ background: '#F8F7F4' }}
+        style={{
+          background: 'rgba(246, 242, 234, 0.85)',
+          WebkitBackdropFilter: 'blur(4px)',
+        }}
       >
         {navItems.map((item) => {
           const active =
@@ -90,18 +93,18 @@ export default function NavBar() {
             <Link
               key={item.href}
               href={item.href}
-              className="flex-1 flex flex-col items-center py-3 gap-0.5 transition-colors"
+              className="flex-1 flex flex-col items-center py-2.5 gap-0.5 transition-colors"
               style={{
-                borderBottom: active ? '2px solid #8A6F4D' : '2px solid transparent',
-                color: active ? '#8A6F4D' : '#B0A898',
+                borderBottom: active ? '1px solid #6F4E2E' : '1px solid transparent',
+                color: active ? '#6F4E2E' : '#8B8270',
               }}
             >
               <div className="transition-colors">
-                {item.icon(active ? '#8A6F4D' : '#B0A898')}
+                {item.icon(active ? '#6F4E2E' : '#8B8270')}
               </div>
               <span
-                className="text-[9px] font-semibold leading-none tracking-wide transition-colors"
-                style={{ color: active ? '#8A6F4D' : '#B0A898' }}
+                className="text-[8px] font-medium leading-none tracking-wide transition-colors"
+                style={{ color: active ? '#6F4E2E' : '#8B8270' }}
               >
                 {item.label}
               </span>

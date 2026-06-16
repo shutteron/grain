@@ -2,34 +2,36 @@
 
 /* ── Design tokens ── */
 @theme {
-  --color-g-bg:      #F8F7F4;
-  --color-g-card:    #FFFFFF;
-  --color-g-text:    #1F1F1F;
-  --color-g-muted:   #6B6B6B;
-  --color-g-faint:   #9E9E9E;
-  --color-g-border:  #E5E0D8;
-  --color-g-accent:  #8A6F4D;
-  --color-g-accent2: #6B5337;
+  --color-g-bg:      #F6F2EA;
+  --color-g-card:    #FFFDF8;
+  --color-g-text:    #171717;
+  --color-g-muted:   #7A7168;
+  --color-g-faint:   #A9A093;
+  --color-g-border:  #DDD4C6;
+  --color-g-accent:  #6F4E2E;
+  --color-g-accent-soft: #EFE5D6;
+  --color-g-dark-panel: #181614;
+  --color-g-dark-text: #F7F2EA;
 }
 
 /* ── Base ── */
 body {
-  background-color: #F8F7F4;
-  color: #1F1F1F;
+  background-color: #F6F2EA;
+  color: #171717;
   font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans',
     'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
   -webkit-font-smoothing: antialiased;
   letter-spacing: 0.015em;
 }
 
-/* ── Card hover — PC で浮く ── */
+/* ── Card hover — 控えめ ── */
 .lesson-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 @media (hover: hover) {
   .lesson-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 28px rgba(31, 31, 31, 0.09);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(23, 23, 23, 0.05);
   }
 }
 
@@ -38,8 +40,8 @@ body {
 }
 @media (hover: hover) {
   .category-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(31, 31, 31, 0.07);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(23, 23, 23, 0.04);
   }
 }
 
