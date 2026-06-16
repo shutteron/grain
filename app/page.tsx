@@ -153,10 +153,10 @@ export default function Home() {
           className="text-[12px] leading-relaxed mt-3 mb-3"
           style={{ color: '#8B8270' }}
         >
-          F値、露出、ピント、白い服、ストロボなどで検索できます。
+          写真が暗い、ピントが合わない、背景がボケないなど、困ったことや専門用語で検索できます。
         </p>
         <div className="flex flex-wrap gap-2">
-          {['F値', '露出', 'ピント', '逆光', 'ストロボ', '白い服'].map((term) => (
+          {['写真が暗い', '背景がボケない', 'ピントが合わない', '顔が暗い', 'ブレる', 'F値', '露出', 'ストロボ'].map((term) => (
             <a
               key={term}
               href={`/search?q=${encodeURIComponent(term)}`}

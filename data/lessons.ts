@@ -52,7 +52,7 @@ export const lessons: Lesson[] = [
     title: "露出とは何か",
     level: "intro",
     category: "term",
-    tags: ["露出", "明るさ", "入門", "基本"],
+    tags: ["露出", "明るさ", "入門", "基本", "暗い", "明るく撮りたい", "写真の明るさ"],
     summary:
       "露出は「明るさの調整」ではなく、「写真の見せ方を決める」設定。",
     beginnerExplanation:
@@ -98,7 +98,7 @@ export const lessons: Lesson[] = [
     title: "F値とは",
     level: "intro",
     category: "term",
-    tags: ["F値", "絞り", "ボケ", "被写界深度", "入門"],
+    tags: ["F値", "絞り", "ボケ", "被写界深度", "入門", "背景ボケ", "背景をぼかしたい", "ふんわり", "明るさ"],
     summary:
       "F値は「どこからどこまでピントを合わせるか」の深さを決める設定。",
     beginnerExplanation:
@@ -121,7 +121,7 @@ export const lessons: Lesson[] = [
     title: "シャッタースピードとは",
     level: "intro",
     category: "term",
-    tags: ["シャッタースピード", "ブレ", "動き", "入門"],
+    tags: ["シャッタースピード", "ブレ", "動き", "入門", "止めたい", "動きを止めたい", "子ども", "スポーツ"],
     summary:
       "ブレを止めるか、動きを残すかを選ぶ設定。速いほど止まり、遅いほど流れる。",
     beginnerExplanation:
@@ -190,7 +190,7 @@ export const lessons: Lesson[] = [
     title: "写真が暗い時の考え方",
     level: "basic",
     category: "trouble",
-    tags: ["失敗解決", "露出", "暗い", "初級"],
+    tags: ["失敗解決", "露出", "暗い", "初級", "写真が暗い", "明るく撮りたい", "露出補正", "ISO"],
     summary:
       "ISO・F値・シャッタースピード・露出補正の『トレードオフ』を理解すれば、暗い場面でも最適な選択ができる。",
     beginnerExplanation:
@@ -213,7 +213,7 @@ export const lessons: Lesson[] = [
     title: "ピントが合わない理由",
     level: "basic",
     category: "trouble",
-    tags: ["失敗解決", "ピント", "AF", "初級"],
+    tags: ["失敗解決", "ピント", "AF", "初級", "ピントが合わない", "ピンボケ", "ぼやける", "オートフォーカス"],
     summary:
       "AFが迷う原因を知れば、どこを手動で補えばいいかが分かる。",
     beginnerExplanation:
@@ -236,7 +236,7 @@ export const lessons: Lesson[] = [
     title: "写真がブレる理由",
     level: "basic",
     category: "trouble",
-    tags: ["失敗解決", "ブレ", "手ブレ", "被写体ブレ", "初級"],
+    tags: ["失敗解決", "ブレ", "手ブレ", "被写体ブレ", "初級", "ブレる", "写真がブレる", "動く", "シャッタースピード", "子ども", "スポーツ"],
     summary:
       "手ブレと被写体ブレは原因が違う。正しい原因を特定してから対策する。",
     beginnerExplanation:
@@ -259,7 +259,7 @@ export const lessons: Lesson[] = [
     title: "背景がボケない理由",
     level: "basic",
     category: "trouble",
-    tags: ["失敗解決", "ボケ", "F値", "焦点距離", "初級"],
+    tags: ["失敗解決", "ボケ", "F値", "焦点距離", "初級", "ボケない", "背景がボケない", "背景をぼかしたい", "ふんわり", "レンズ"],
     summary:
       "ボケはF値だけでなく、焦点距離・被写体との距離・背景との距離が重なって生まれる。",
     beginnerExplanation:
@@ -282,7 +282,7 @@ export const lessons: Lesson[] = [
     title: "顔が暗くなる理由と解決法",
     level: "basic",
     category: "trouble",
-    tags: ["失敗解決", "逆光", "測光", "露出補正", "初級"],
+    tags: ["失敗解決", "逆光", "測光", "露出補正", "初級", "顔が暗い", "人物が暗い", "顔を明るくしたい", "ポートレート", "ストロボ"],
     summary:
       "逆光・白背景・測光ミスが主原因。露出補正か測光モード変更で解決できる。",
     beginnerExplanation:
@@ -397,7 +397,7 @@ export const lessons: Lesson[] = [
     title: "ストロボは何のために使うのか",
     level: "intermediate",
     category: "lighting",
-    tags: ["ストロボ", "補光", "光", "中級"],
+    tags: ["ストロボ", "補光", "光", "中級", "フラッシュ", "顔を明るくしたい", "逆光", "暗い", "光を足す"],
     summary:
       "ストロボ＝『暗い時に使う』ではなく『光の方向・光のバランスを整える道具』。昼間の逆光でこそ活躍する。",
     beginnerExplanation:
@@ -558,7 +558,7 @@ export const lessons: Lesson[] = [
     title: "露出補正の使い方",
     level: "basic",
     category: "setting",
-    tags: ["露出補正", "EV値", "初級", "設定"],
+    tags: ["露出補正", "EV値", "初級", "設定", "明るくしたい", "暗くしたい", "白い服", "黒い服", "カメラ任せ"],
     summary:
       "カメラの判定を自分の意図に寄せるための操作。明るくするボタンではない。",
     beginnerExplanation:
@@ -581,7 +581,7 @@ export const lessons: Lesson[] = [
     title: "白い服が暗く写る理由",
     level: "basic",
     category: "trouble",
-    tags: ["白色", "測光", "補正", "失敗"],
+    tags: ["白色", "測光", "補正", "失敗", "白い服", "白い服が暗い", "白が暗い", "白無垢", "明るく撮りたい", "露出補正"],
     summary:
       "カメラが『白が標準より明るい』と判定して、自動的に暗くしてしまう。",
     beginnerExplanation:
@@ -604,7 +604,7 @@ export const lessons: Lesson[] = [
     title: "黒い服が明るく写る理由",
     level: "basic",
     category: "trouble",
-    tags: ["黒色", "測光", "補正", "失敗"],
+    tags: ["黒色", "測光", "補正", "失敗", "黒い服", "黒い服が明るい", "黒が明るい", "黒を黒く撮りたい", "露出補正"],
     summary:
       "カメラが『黒が標準より暗い』と判定して、自動的に明るくしてしまう。",
     beginnerExplanation:

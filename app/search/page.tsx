@@ -56,10 +56,11 @@ export default async function SearchPage({
             別の言葉で検索してみてください。
           </p>
           <p
-            className="text-[11px]"
+            className="text-[11px] leading-relaxed"
             style={{ color: '#B0A898' }}
           >
-            例：露出、ピント、逆光、白い服
+            例：<br />
+            写真が暗い、背景がボケない、ピントが合わない、ブレる、逆光
           </p>
         </div>
       )}
