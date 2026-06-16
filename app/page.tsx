@@ -105,7 +105,7 @@ export default function Home() {
 
           {/* 画像領域（プレースホルダー） */}
           <div
-            className="flex-1 rounded-md overflow-hidden md:min-h-[360px] min-h-[240px] flex items-center justify-center"
+            className="flex-1 rounded-md overflow-hidden md:min-h-[360px] min-h-[240px] flex items-center justify-center relative"
             style={{
               background: 'linear-gradient(135deg, #2A2420 0%, #3D3431 100%)',
               border: '1px solid #DDD4C6',
@@ -113,7 +113,7 @@ export default function Home() {
           >
             {/* グレイン質感 */}
             <div
-              className="w-full h-full opacity-[0.04] absolute"
+              className="w-full h-full opacity-[0.04] absolute pointer-events-none"
               style={{
                 backgroundImage:
                   'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")',
