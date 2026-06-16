@@ -226,17 +226,17 @@ export const lessons: Lesson[] = [
     relatedIds: ["exposure-basic", "iso-basic", "aperture-basic", "shutter-speed-basic", "dynamic-range-basic", "exposure-compensation-basic"],
     imageExamples: [
       {
-        title: "暗すぎる写真",
+        title: "暗すぎる",
         description: "光が足りていない状態。被写体が見えづらく、全体が沈んだ印象になります",
         beforeImage: "/images/examples/dark-photo-trouble-dark.jpg"
       },
       {
-        title: "ちょうどよい写真",
+        title: "ちょうどいい",
         description: "被写体と背景のバランスがとれた状態。初心者は、この『ちょうどいい』を探す練習が大事です",
         beforeImage: "/images/examples/dark-photo-trouble-good.jpg"
       },
       {
-        title: "明るすぎる写真",
+        title: "明るすぎる",
         description: "光が多すぎる状態。明るいですが、やや眠い印象になることもあります",
         beforeImage: "/images/examples/dark-photo-trouble-bright.jpg"
       },
