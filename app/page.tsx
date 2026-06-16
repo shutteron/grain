@@ -128,6 +128,35 @@ export default function Home() {
         <SearchBar />
       </div>
 
+      {/* ── まず読む3つ ── */}
+      <div className="px-5 pb-2">
+        <div
+          className="flex items-center gap-3 mb-4"
+          style={{ borderBottom: '1px solid #DDD4C6', paddingBottom: '12px' }}
+        >
+          <p
+            className="text-[10px] font-bold tracking-[0.15em] uppercase"
+            style={{ color: '#7A7168' }}
+          >
+            まず読む3つ
+          </p>
+        </div>
+        <p
+          className="text-[12px] leading-relaxed mb-4"
+          style={{ color: '#8B8270' }}
+        >
+          写真の基本をつかむなら、まずここから。
+        </p>
+        <div className="flex flex-col gap-2.5">
+          {['camera-auto-graduate', 'exposure-basic', 'dark-photo-trouble']
+            .map((id) => all.find((l) => l.id === id))
+            .filter((l): l is typeof all[0] => l !== undefined)
+            .map((l) => (
+              <LessonCard key={l.id} lesson={l} />
+            ))}
+        </div>
+      </div>
+
       {/* ── カテゴリ（目次風） ── */}
       <div className="px-5 pb-2">
         <p
@@ -159,6 +188,44 @@ export default function Home() {
         <div className="flex flex-col gap-2.5">
           {pickup.map((l) => (
             <LessonCard key={l.id} lesson={l} />
+          ))}
+        </div>
+      </div>
+
+      {/* ── こんな時に見る ── */}
+      <div className="px-5 pb-2">
+        <div
+          className="flex items-center gap-3 mb-4"
+          style={{ borderBottom: '1px solid #DDD4C6', paddingBottom: '12px' }}
+        >
+          <p
+            className="text-[10px] font-bold tracking-[0.15em] uppercase"
+            style={{ color: '#7A7168' }}
+          >
+            こんな時に見る
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {[
+            { label: '写真が暗い', id: 'dark-photo-trouble' },
+            { label: '顔が暗い', id: 'dark-face-trouble' },
+            { label: 'ピントが合わない', id: 'focus-trouble' },
+            { label: '背景がボケない', id: 'background-blur-trouble' },
+            { label: '白い服が暗く写る', id: 'white-clothes-dark-trouble' },
+            { label: '黒い服が明るく写る', id: 'black-clothes-bright-trouble' },
+          ].map(({ label, id }) => (
+            <a
+              key={id}
+              href={`/lessons/${id}`}
+              className="inline-block px-4 py-2 rounded-full text-[12px] font-medium transition-all active:scale-95 select-none"
+              style={{
+                background: '#F8F7F4',
+                border: '1px solid #DDD4C6',
+                color: '#6F4E2E',
+              }}
+            >
+              {label}
+            </a>
           ))}
         </div>
       </div>

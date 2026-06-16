@@ -12,6 +12,13 @@ export type LessonCategory =
   | "lighting"
   | "setting";
 
+export type ImageExample = {
+  title: string;
+  description: string;
+  beforeImage?: string;
+  afterImage?: string;
+};
+
 export type Lesson = {
   id: string;
   title: string;
@@ -25,4 +32,5 @@ export type Lesson = {
   junichiNote: string;
   practice: string;
   relatedIds: string[];
+  imageExamples?: ImageExample[];
 };

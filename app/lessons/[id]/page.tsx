@@ -229,6 +229,112 @@ export default async function LessonPage({
 
         <Divider />
 
+        {/* 作例で見る */}
+        <section className="px-5 py-7">
+          <SLabel>作例で見る</SLabel>
+          {lesson.imageExamples && lesson.imageExamples.length > 0 ? (
+            <div className="flex flex-col gap-6">
+              {lesson.imageExamples.map((example, i) => (
+                <div
+                  key={i}
+                  className="rounded-[14px] overflow-hidden"
+                  style={{ border: '1px solid #E5E0D8' }}
+                >
+                  {/* 画像比較または単体表示 */}
+                  {example.beforeImage && example.afterImage ? (
+                    <div className="flex flex-col">
+                      <div className="flex gap-1 bg-[#F8F7F4]">
+                        <div className="flex-1">
+                          <img
+                            src={example.beforeImage}
+                            alt="Before"
+                            className="w-full h-auto block"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <img
+                            src={example.afterImage}
+                            alt="After"
+                            className="w-full h-auto block"
+                          />
+                        </div>
+                      </div>
+                      <div className="px-4 py-4 bg-white">
+                        <p
+                          className="text-[12px] font-semibold mb-1"
+                          style={{ color: '#1F1F1F' }}
+                        >
+                          {example.title}
+                        </p>
+                        <p
+                          className="text-[11px] leading-relaxed"
+                          style={{ color: '#8B8270' }}
+                        >
+                          {example.description}
+                        </p>
+                      </div>
+                    </div>
+                  ) : example.beforeImage || example.afterImage ? (
+                    <div>
+                      <img
+                        src={example.beforeImage || example.afterImage || ''}
+                        alt={example.title}
+                        className="w-full h-auto block"
+                      />
+                      <div className="px-4 py-4 bg-white">
+                        <p
+                          className="text-[12px] font-semibold mb-1"
+                          style={{ color: '#1F1F1F' }}
+                        >
+                          {example.title}
+                        </p>
+                        <p
+                          className="text-[11px] leading-relaxed"
+                          style={{ color: '#8B8270' }}
+                        >
+                          {example.description}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="px-4 py-4">
+                      <p
+                        className="text-[12px] font-semibold mb-1"
+                        style={{ color: '#1F1F1F' }}
+                      >
+                        {example.title}
+                      </p>
+                      <p
+                        className="text-[11px] leading-relaxed"
+                        style={{ color: '#8B8270' }}
+                      >
+                        {example.description}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              className="rounded-[14px] px-4 py-6 text-center"
+              style={{
+                background: '#FAFAF8',
+                border: '1px solid #E5E0D8',
+              }}
+            >
+              <p
+                className="text-[13px] leading-relaxed"
+                style={{ color: '#B0A898' }}
+              >
+                ここに作例写真を追加予定です。
+              </p>
+            </div>
+          )}
+        </section>
+
+        <Divider />
+
         {/* 練習課題 */}
         <section className="px-5 py-7">
           <SLabel>練習課題</SLabel>
