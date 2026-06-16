@@ -92,6 +92,23 @@ export const lessons: Lesson[] = [
     practice:
       "少し暗い場所で、同じものを何枚か撮ってみましょう。ISOを低め・中くらい・高めに変えて、写真の明るさとザラザラ感がどう変わるか見比べてください。数字を完璧に覚えるより、違いを目で見ることが大切です。",
     relatedIds: ["exposure-basic", "aperture-basic", "shutter-speed-basic", "dark-photo-trouble", "camera-shake-trouble"],
+    imageExamples: [
+      {
+        title: "ISO 低め",
+        description: "室内で ISO 100 で撮影。暗くて見えづらいですが、ザラザラはありません。ISOを上げずにこのまま撮ると、ブレてしまう可能性があります",
+        beforeImage: "/images/examples/iso-basic-low.jpg"
+      },
+      {
+        title: "ISO 中くらい",
+        description: "ISO 1600 で撮影。適切な明るさで、ザラつきもわずかです。初心者はこのレベルから始めるのがおすすめです",
+        beforeImage: "/images/examples/iso-basic-middle.jpg"
+      },
+      {
+        title: "ISO 高め",
+        description: "ISO 6400 で撮影。明るいですが、画面全体が少しザラザラしています。ブレて使えない写真より、ザラザラでも撮れている写真を優先する判断が時には大事です",
+        beforeImage: "/images/examples/iso-basic-high.jpg"
+      },
+    ],
   },
   {
     id: "aperture-basic",
@@ -207,6 +224,23 @@ export const lessons: Lesson[] = [
     practice:
       "同じ場所で、明るさを変えて3枚撮ってみましょう。暗い写真、少し明るい写真、明るすぎる写真を見比べて、自分が好きな明るさを探してみてください。",
     relatedIds: ["exposure-basic", "iso-basic", "aperture-basic", "shutter-speed-basic", "dynamic-range-basic", "exposure-compensation-basic"],
+    imageExamples: [
+      {
+        title: "暗すぎる写真",
+        description: "光が足りていない状態。被写体が見えづらく、全体が沈んだ印象になります",
+        beforeImage: "/images/examples/dark-photo-trouble-dark.jpg"
+      },
+      {
+        title: "ちょうどよい写真",
+        description: "被写体と背景のバランスがとれた状態。初心者は、この『ちょうどいい』を探す練習が大事です",
+        beforeImage: "/images/examples/dark-photo-trouble-good.jpg"
+      },
+      {
+        title: "明るすぎる写真",
+        description: "光が多すぎる状態。明るいですが、やや眠い印象になることもあります",
+        beforeImage: "/images/examples/dark-photo-trouble-bright.jpg"
+      },
+    ],
   },
   {
     id: "focus-trouble",
@@ -230,6 +264,23 @@ export const lessons: Lesson[] = [
     practice:
       "自分の顔か好きなぬいぐるみを撮って、ピントが目に来ている写真と違う場所に来ている写真を比べてみてください。どこにピントがあると見やすいか探してみましょう。",
     relatedIds: ["camera-shake-trouble", "aperture-basic", "portrait-basic"],
+    imageExamples: [
+      {
+        title: "ピント正解",
+        description: "顔、特に目にピントが合った状態。被写体がシャープに見え、視線が自然に向かいます",
+        beforeImage: "/images/examples/focus-trouble-good.jpg"
+      },
+      {
+        title: "背景にピント抜け",
+        description: "カメラが被写体ではなく背景にピントを合わせた失敗例。被写体がやや柔らかく見えます",
+        beforeImage: "/images/examples/focus-trouble-background.jpg"
+      },
+      {
+        title: "手前にピント",
+        description: "カメラが被写体より手前のものに反応して、ピントを合わせてしまった例。背景にも被写体にも、ピントが合っていません",
+        beforeImage: "/images/examples/focus-trouble-foreground.jpg"
+      },
+    ],
   },
   {
     id: "camera-shake-trouble",
@@ -276,6 +327,23 @@ export const lessons: Lesson[] = [
     practice:
       "近い距離から撮ったときと遠い距離から撮ったときで、背景がどう見えるか比べてみてください。自分が被写体に近いほど背景がぼけやすいことが分かります。",
     relatedIds: ["aperture-basic", "focal-length-basic", "portrait-basic"],
+    imageExamples: [
+      {
+        title: "背景がボケていない状態",
+        description: "被写体が遠く、背景も近い状態です。背景も含めて全体が見えますが、主役が目立ちません",
+        beforeImage: "/images/examples/background-blur-trouble-no-blur.jpg"
+      },
+      {
+        title: "被写体に近づいた写真",
+        description: "同じレンズでも被写体に近づくと、背景がボケやすくなります。主役が引き立ちます",
+        beforeImage: "/images/examples/background-blur-trouble-close.jpg"
+      },
+      {
+        title: "背景を遠ざけた写真",
+        description: "被写体の距離は変わらず、背景を遠ざけると、さらに背景がボケます。ボケの強さは、距離とレンズの組み合わせで決まります",
+        beforeImage: "/images/examples/background-blur-trouble-distance.jpg"
+      },
+    ],
   },
   {
     id: "dark-face-trouble",
@@ -299,6 +367,23 @@ export const lessons: Lesson[] = [
     practice:
       "窓を背にしている人を撮ってみてください。顔が暗い場合は、カメラを人の方に向け直してから撮ると明るくなります。背景と顔のどちらが大切か考えながら、自分好みの明るさを探してみましょう。",
     relatedIds: ["exposure-basic", "dynamic-range-basic", "light-direction-basic", "strobe-purpose", "clip-on-strobe-basic"],
+    imageExamples: [
+      {
+        title: "逆光で顔が暗い",
+        description: "背景の空が明るいため、カメラが背景に合わせて露出を決め、顔が暗くなります",
+        beforeImage: "/images/examples/dark-face-trouble-backlight.jpg"
+      },
+      {
+        title: "露出補正で明るく",
+        description: "同じシーンで露出補正 +1.0EV～+1.5EV にすると、顔が明るくなります。背景が少し明るくなりすぎる可能性もありますが、顔が優先です",
+        beforeImage: "/images/examples/dark-face-trouble-exposure.jpg"
+      },
+      {
+        title: "光を足した写真",
+        description: "レフ板やストロボで光を足すと、より自然な明るさになります。背景と顔の両立が可能になります",
+        beforeImage: "/images/examples/dark-face-trouble-light-added.jpg"
+      },
+    ],
   },
   {
     id: "light-and-shadow-basic",
