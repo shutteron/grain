@@ -1,8 +1,5 @@
-'use client';
-
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { useState, use } from 'react';
 import {
   getAllLessons,
   getLessonById,
@@ -14,6 +11,7 @@ import {
 import FavoriteButton from '@/components/FavoriteButton';
 import FavoriteButtonFull from '@/components/FavoriteButtonFull';
 import LessonCard from '@/components/LessonCard';
+import LessonExpandableSection from '@/components/LessonExpandableSection';
 import type { Lesson } from '@/types/lesson';
 
 export async function generateStaticParams() {
@@ -43,16 +41,15 @@ function Divider() {
   return <hr style={{ borderColor: '#E5E0D8', margin: '0' }} />;
 }
 
-export default function LessonPage({
+export default async function LessonPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = use(params);
+  const { id } = await params;
   const lesson = getLessonById(id);
   if (!lesson) notFound();
 
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const isBeginnerLesson = lesson.level === 'intro' || lesson.level === 'basic';
 
   /* 関連記事：現在の教材自身を除外 */
@@ -175,76 +172,14 @@ export default function LessonPage({
         {/* まず何を覚える？ or もっと詳しく知りたい人へ */}
         <section className="px-5 py-7">
           <SLabel>{lesson.id === 'iso-basic' ? 'もっと詳しく知りたい人へ' : 'まず何を覚える？'}</SLabel>
-          {isBeginnerLesson && lesson.beginnerExplanation.split('\n\n').length > 1 ? (
-            <div>
-              {lesson.id !== 'iso-basic' && (
-                <div className="flex flex-col gap-3 mb-4">
-                  <p
-                    className="text-[13px] leading-[1.8]"
-                    style={{ color: '#3A3A3A' }}
-                  >
-                    {lesson.beginnerExplanation.split('\n\n')[0]}
-                  </p>
-                </div>
-              )}
-              {expandedSection === 'beginner-explanation' && (
-                <div className="flex flex-col gap-3 mb-4">
-                  {lesson.beginnerExplanation.split('\n\n').slice(1).map((para, i) => (
-                    <p
-                      key={i}
-                      className="text-[13px] leading-[1.8]"
-                      style={{ color: '#3A3A3A' }}
-                    >
-                      {para}
-                    </p>
-                  ))}
-                </div>
-              )}
-              {lesson.id === 'iso-basic' && expandedSection !== 'beginner-explanation' && (
-                <div className="flex flex-col gap-3 mb-4">
-                  {lesson.beginnerExplanation.split('\n\n').slice(2).map((para, i) => (
-                    <p
-                      key={i}
-                      className="text-[13px] leading-[1.8]"
-                      style={{ color: '#3A3A3A' }}
-                    >
-                      {para}
-                    </p>
-                  ))}
-                </div>
-              )}
-              {(lesson.id !== 'iso-basic' || expandedSection === 'beginner-explanation') && (
-                <button
-                  onClick={() =>
-                    setExpandedSection(
-                      expandedSection === 'beginner-explanation' ? null : 'beginner-explanation'
-                    )
-                  }
-                  className="text-[12px] font-semibold px-4 py-2 rounded-[8px] transition-colors"
-                  style={{
-                    background: '#F0EBE5',
-                    color: '#7A6040',
-                  }}
-                >
-                  {expandedSection === 'beginner-explanation'
-                    ? '閉じる'
-                    : 'もっと詳しく知りたい人へ'}
-                </button>
-              )}
-            </div>
-          ) : (
-            <div className="flex flex-col gap-3">
-              {lesson.beginnerExplanation.split('\n\n').map((para, i) => (
-                <p
-                  key={i}
-                  className="text-[13px] leading-[1.8]"
-                  style={{ color: '#3A3A3A' }}
-                >
-                  {para}
-                </p>
-              ))}
-            </div>
-          )}
+          <LessonExpandableSection
+            lessonId={lesson.id}
+            isBeginnerLesson={isBeginnerLesson}
+            explanationParagraphs={lesson.beginnerExplanation.split('\n\n')}
+            showFirstParagraph={lesson.id !== 'iso-basic'}
+            labelWhenClosed="もっと詳しく知りたい人へ"
+            labelWhenOpen="もっと詳しく知りたい人へ"
+          />
         </section>
 
         {lesson.id !== 'iso-basic' && (
