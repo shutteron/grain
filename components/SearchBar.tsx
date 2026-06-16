@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useRef } from 'react';
 
 type SearchBarProps = {
   defaultValue?: string;
@@ -13,35 +13,36 @@ export default function SearchBar({
   placeholder = 'F値、逆光、ピント、背景ボケなど',
 }: SearchBarProps) {
   const router = useRouter();
-  const [query, setQuery] = useState(defaultValue);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const trimmedQuery = query.trim();
+    if (!inputRef.current) return;
+
+    const trimmedQuery = inputRef.current.value.trim();
     if (!trimmedQuery) return;
+
     router.push(`/search?q=${encodeURIComponent(trimmedQuery)}`);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2" noValidate>
+    <form onSubmit={handleSubmit} className="flex gap-2">
       <input
+        ref={inputRef}
         type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        defaultValue={defaultValue}
         placeholder={placeholder}
-        className="flex-1 rounded-sm px-4 py-3 text-sm outline-none transition-colors"
+        className="flex-1 rounded-sm px-4 py-3 text-sm outline-none"
         style={{
           background: '#FFFDF8',
           border: '1px solid #DDD4C6',
           color: '#171717',
         }}
-        aria-label="教材検索"
       />
       <button
         type="submit"
-        className="shrink-0 rounded-sm px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 active:opacity-70 cursor-pointer"
-        style={{ background: '#6F4E2E' }}
-        aria-label="検索実行"
+        className="shrink-0 rounded-sm px-5 py-3 text-sm font-semibold text-white"
+        style={{ background: '#6F4E2E', cursor: 'pointer' }}
       >
         検索
       </button>
