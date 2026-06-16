@@ -332,47 +332,83 @@ export default function LessonPage({
           {lesson.imageExamples && lesson.imageExamples.length > 0 ? (
             <div className="flex flex-col gap-6">
               {lesson.imageExamples.map((example, i) => (
-                <div
-                  key={i}
-                  className="rounded-[14px] overflow-hidden"
-                  style={{ border: '1px solid #E5E0D8' }}
-                >
-                  {/* 画像比較または単体表示 */}
-                  {example.beforeImage && example.afterImage ? (
-                    <div className="flex flex-col">
-                      <div className="flex gap-1 bg-[#F8F7F4]">
-                        <div className="flex-1">
-                          <img
-                            src={example.beforeImage}
-                            alt="Before"
-                            className="w-full h-auto block"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <img
-                            src={example.afterImage}
-                            alt="After"
-                            className="w-full h-auto block"
-                          />
-                        </div>
+                <div key={i}>
+                  {/* 3枚比較表示 */}
+                  {example.images && example.images.length > 0 ? (
+                    <div className="flex flex-col gap-3">
+                      <div className="flex flex-col md:flex-row gap-2">
+                        {example.images.map((img, idx) => (
+                          <div key={idx} className="flex-1 rounded-[12px] overflow-hidden" style={{ border: '1px solid #E5E0D8' }}>
+                            <img
+                              src={img.src}
+                              alt={img.label}
+                              className="w-full h-auto block bg-[#F8F7F4]"
+                            />
+                            <div className="px-3 py-3 bg-white">
+                              <p className="text-[11px] font-semibold" style={{ color: '#1F1F1F' }}>
+                                {img.label}
+                              </p>
+                              {img.description && (
+                                <p className="text-[10px] leading-relaxed mt-1" style={{ color: '#8B8270' }}>
+                                  {img.description}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                      <div className="px-4 py-4 bg-white">
-                        <p
-                          className="text-[12px] font-semibold mb-1"
-                          style={{ color: '#1F1F1F' }}
-                        >
-                          {example.title}
-                        </p>
-                        <p
-                          className="text-[11px] leading-relaxed"
-                          style={{ color: '#8B8270' }}
-                        >
-                          {example.description}
-                        </p>
+                      {(example.title || example.description) && (
+                        <div className="px-4 py-3 bg-[#F8F7F4] rounded-[12px]">
+                          {example.title && (
+                            <p className="text-[12px] font-semibold mb-1" style={{ color: '#1F1F1F' }}>
+                              {example.title}
+                            </p>
+                          )}
+                          {example.description && (
+                            <p className="text-[11px] leading-relaxed" style={{ color: '#8B8270' }}>
+                              {example.description}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ) : example.beforeImage && example.afterImage ? (
+                    <div className="rounded-[14px] overflow-hidden" style={{ border: '1px solid #E5E0D8' }}>
+                      <div className="flex flex-col">
+                        <div className="flex gap-1 bg-[#F8F7F4]">
+                          <div className="flex-1">
+                            <img
+                              src={example.beforeImage}
+                              alt="Before"
+                              className="w-full h-auto block"
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <img
+                              src={example.afterImage}
+                              alt="After"
+                              className="w-full h-auto block"
+                            />
+                          </div>
+                        </div>
+                        <div className="px-4 py-4 bg-white">
+                          <p
+                            className="text-[12px] font-semibold mb-1"
+                            style={{ color: '#1F1F1F' }}
+                          >
+                            {example.title}
+                          </p>
+                          <p
+                            className="text-[11px] leading-relaxed"
+                            style={{ color: '#8B8270' }}
+                          >
+                            {example.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   ) : example.beforeImage || example.afterImage ? (
-                    <div>
+                    <div className="rounded-[14px] overflow-hidden" style={{ border: '1px solid #E5E0D8' }}>
                       <img
                         src={example.beforeImage || example.afterImage || ''}
                         alt={example.title}

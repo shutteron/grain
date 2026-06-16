@@ -15,6 +15,11 @@ export type LessonCategory =
 export type ImageExample = {
   title: string;
   description: string;
+  images?: {
+    label: string;
+    src: string;
+    description?: string;
+  }[];
   beforeImage?: string;
   afterImage?: string;
 };
