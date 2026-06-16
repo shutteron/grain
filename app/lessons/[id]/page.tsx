@@ -1,5 +1,8 @@
+'use client';
+
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { useState, use } from 'react';
 import {
   getAllLessons,
   getLessonById,
@@ -40,14 +43,17 @@ function Divider() {
   return <hr style={{ borderColor: '#E5E0D8', margin: '0' }} />;
 }
 
-export default async function LessonPage({
+export default function LessonPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = await params;
+  const { id } = use(params);
   const lesson = getLessonById(id);
   if (!lesson) notFound();
+
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const isBeginnerLesson = lesson.level === 'intro' || lesson.level === 'basic';
 
   /* 関連記事：現在の教材自身を除外 */
   const related = getRelatedLessons(lesson.relatedIds).filter(
@@ -164,17 +170,59 @@ export default async function LessonPage({
         {/* まず何を覚える？ */}
         <section className="px-5 py-7">
           <SLabel>まず何を覚える？</SLabel>
-          <div className="flex flex-col gap-3">
-            {lesson.beginnerExplanation.split('\n\n').map((para, i) => (
-              <p
-                key={i}
-                className="text-[13px] leading-[1.8]"
-                style={{ color: '#3A3A3A' }}
+          {isBeginnerLesson && lesson.beginnerExplanation.split('\n\n').length > 1 ? (
+            <div>
+              <div className="flex flex-col gap-3 mb-4">
+                <p
+                  className="text-[13px] leading-[1.8]"
+                  style={{ color: '#3A3A3A' }}
+                >
+                  {lesson.beginnerExplanation.split('\n\n')[0]}
+                </p>
+              </div>
+              {expandedSection === 'beginner-explanation' && (
+                <div className="flex flex-col gap-3 mb-4">
+                  {lesson.beginnerExplanation.split('\n\n').slice(1).map((para, i) => (
+                    <p
+                      key={i}
+                      className="text-[13px] leading-[1.8]"
+                      style={{ color: '#3A3A3A' }}
+                    >
+                      {para}
+                    </p>
+                  ))}
+                </div>
+              )}
+              <button
+                onClick={() =>
+                  setExpandedSection(
+                    expandedSection === 'beginner-explanation' ? null : 'beginner-explanation'
+                  )
+                }
+                className="text-[12px] font-semibold px-4 py-2 rounded-[8px] transition-colors"
+                style={{
+                  background: '#F0EBE5',
+                  color: '#7A6040',
+                }}
               >
-                {para}
-              </p>
-            ))}
-          </div>
+                {expandedSection === 'beginner-explanation'
+                  ? '閉じる'
+                  : 'もっと詳しく知りたい人へ'}
+              </button>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {lesson.beginnerExplanation.split('\n\n').map((para, i) => (
+                <p
+                  key={i}
+                  className="text-[13px] leading-[1.8]"
+                  style={{ color: '#3A3A3A' }}
+                >
+                  {para}
+                </p>
+              ))}
+            </div>
+          )}
         </section>
 
         <Divider />
@@ -217,36 +265,40 @@ export default async function LessonPage({
           </ul>
         </section>
 
-        <Divider />
+        {!isBeginnerLesson && (
+          <>
+            <Divider />
 
-        {/* 撮影現場メモ */}
-        <section className="px-5 py-7">
-          <SLabel>撮影現場メモ</SLabel>
-          <div
-            className="rounded-[14px] px-5 py-5"
-            style={{ background: '#FDFAF4', border: '1px solid #EDE4D0' }}
-          >
-            <p
-              className="text-[10px] font-bold tracking-[0.1em] uppercase mb-3"
-              style={{ color: '#C4A870' }}
-            >
-              プロのワンポイント
-            </p>
-            <div className="flex flex-col gap-3">
-              {lesson.junichiNote.split('\n\n').map((para, i) => (
+            {/* 撮影現場メモ */}
+            <section className="px-5 py-7">
+              <SLabel>撮影現場メモ</SLabel>
+              <div
+                className="rounded-[14px] px-5 py-5"
+                style={{ background: '#FDFAF4', border: '1px solid #EDE4D0' }}
+              >
                 <p
-                  key={i}
-                  className="text-[13px] leading-[1.8]"
-                  style={{ color: '#4A3820' }}
+                  className="text-[10px] font-bold tracking-[0.1em] uppercase mb-3"
+                  style={{ color: '#C4A870' }}
                 >
-                  {para}
+                  プロのワンポイント
                 </p>
-              ))}
-            </div>
-          </div>
-        </section>
+                <div className="flex flex-col gap-3">
+                  {lesson.junichiNote.split('\n\n').map((para, i) => (
+                    <p
+                      key={i}
+                      className="text-[13px] leading-[1.8]"
+                      style={{ color: '#4A3820' }}
+                    >
+                      {para}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </section>
 
-        <Divider />
+            <Divider />
+          </>
+        )}
 
         {/* 作例で見る */}
         <section className="px-5 py-7">
@@ -397,6 +449,38 @@ export default async function LessonPage({
             <section className="px-5 py-7">
               <SLabel>次に読む</SLabel>
               <LessonCard lesson={next} />
+            </section>
+          </>
+        )}
+
+        {/* 撮影現場メモ（初級レッスン向け - ページ最下部） */}
+        {isBeginnerLesson && (
+          <>
+            <Divider />
+            <section className="px-5 py-7">
+              <SLabel>撮影現場メモ</SLabel>
+              <div
+                className="rounded-[14px] px-5 py-5"
+                style={{ background: '#FDFAF4', border: '1px solid #EDE4D0' }}
+              >
+                <p
+                  className="text-[10px] font-bold tracking-[0.1em] uppercase mb-3"
+                  style={{ color: '#C4A870' }}
+                >
+                  プロのワンポイント
+                </p>
+                <div className="flex flex-col gap-3">
+                  {lesson.junichiNote.split('\n\n').map((para, i) => (
+                    <p
+                      key={i}
+                      className="text-[13px] leading-[1.8]"
+                      style={{ color: '#4A3820' }}
+                    >
+                      {para}
+                    </p>
+                  ))}
+                </div>
+              </div>
             </section>
           </>
         )}
