@@ -27,7 +27,7 @@ export default function FavoriteButton({ id, size = 'md' }: FavoriteButtonProps)
       aria-label={fav ? 'お気に入りを解除する' : 'お気に入りに追加する'}
       className={`${sizeClass} shrink-0 flex items-center justify-center rounded-full transition-all active:scale-90 select-none`}
     >
-      <span style={{ color: fav ? '#8A6F4D' : '#D4C9BC' }}>
+      <span style={{ color: fav ? '#6F4E2E' : '#B5A89A' }}>
         {fav ? '★' : '☆'}
       </span>
     </button>

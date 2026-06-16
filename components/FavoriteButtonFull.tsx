@@ -13,8 +13,8 @@ export default function FavoriteButtonFull({ id }: { id: string }) {
       className="flex items-center gap-2 px-4 py-2.5 rounded-full text-[13px] font-semibold transition-all active:scale-95 select-none w-full justify-center"
       style={
         fav
-          ? { background: '#8A6F4D', color: '#fff', border: '1.5px solid #8A6F4D' }
-          : { background: 'transparent', color: '#8A6F4D', border: '1.5px solid #C4B0A8' }
+          ? { background: '#6F4E2E', color: '#fff', border: '1.5px solid #6F4E2E' }
+          : { background: 'transparent', color: '#6F4E2E', border: '1.5px solid #DDD4C6' }
       }
       aria-label={fav ? 'お気に入りを解除する' : 'お気に入りに追加する'}
     >
