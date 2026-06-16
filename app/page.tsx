@@ -259,6 +259,22 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ── GRAINの使い方 ── */}
+      <div className="px-5 pb-2">
+        <a
+          href="/guide"
+          className="flex items-center justify-between px-4 py-3 rounded-[10px] transition-all active:scale-95"
+          style={{
+            background: '#F8F7F4',
+            border: '1px solid #DDD4C6',
+            color: '#6F4E2E',
+          }}
+        >
+          <span className="text-[12px] font-medium">GRAINの使い方</span>
+          <span className="text-[12px]">→</span>
+        </a>
+      </div>
+
       <p
         className="text-center text-[10px] pb-2"
         style={{ color: '#A9A093' }}
