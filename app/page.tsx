@@ -80,10 +80,18 @@ export default function Home() {
                 GRAIN
               </h1>
               <p
-                className="text-[14px] font-medium leading-relaxed"
+                className="text-[14px] font-medium leading-relaxed mb-3"
                 style={{ color: '#7A7168' }}
               >
                 写真の知識を、感覚に変える。
+              </p>
+              <p
+                className="text-[12px] leading-relaxed"
+                style={{ color: '#8B8270' }}
+              >
+                写真は、最初から全部分からなくて大丈夫。<br />
+                うまく撮れなかった理由が少し分かるだけで、<br />
+                次の一枚は変わります。
               </p>
             </div>
 
@@ -156,6 +164,12 @@ export default function Home() {
             こんな時に見る
           </p>
         </div>
+        <p
+          className="text-[12px] leading-relaxed mb-4"
+          style={{ color: '#8B8270' }}
+        >
+          用語が分からなくても大丈夫。困っていることから探せます。
+        </p>
         <div className="flex flex-wrap gap-2">
           {[
             { label: '写真が暗い', id: 'dark-photo-trouble' },
@@ -198,7 +212,7 @@ export default function Home() {
           className="text-[12px] leading-relaxed mb-4"
           style={{ color: '#8B8270' }}
         >
-          写真の基本をつかむなら、まずここから。
+          何から見ればいいか迷ったら、まずこの3つだけで大丈夫です。
         </p>
         <div className="flex flex-col gap-2.5">
           {['camera-auto-graduate', 'exposure-basic', 'dark-photo-trouble']
