@@ -83,15 +83,14 @@ export default function Home() {
                 className="text-[14px] font-medium leading-relaxed mb-3"
                 style={{ color: '#7A7168' }}
               >
-                写真の知識を、感覚に変える。
+                学んだ写真の知識を、撮る時の判断に変える。
               </p>
               <p
                 className="text-[12px] leading-relaxed"
                 style={{ color: '#8B8270' }}
               >
-                写真は、最初から全部分からなくて大丈夫。<br />
-                うまく撮れなかった理由が少し分かるだけで、<br />
-                次の一枚は変わります。
+                GRAINは、写真オンラインスクール受講者のための復習用教本です。<br />
+                授業で学んだ用語、設定、撮影の失敗を、あとから見返せるようにまとめています。
               </p>
             </div>
 
@@ -104,9 +103,8 @@ export default function Home() {
                 className="text-[13px] leading-relaxed"
                 style={{ color: '#171717', lineHeight: '1.8' }}
               >
-                F値、露出、ピント、逆光。<br />
-                分からない言葉や撮影の失敗を、<br />
-                検索して学べます。
+                写真初心者でも分かるように、<br />
+                やさしい説明と、失敗から学べる構成にしています。
               </p>
             </div>
           </div>
@@ -143,6 +141,72 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* ── 初心者向け案内 ── */}
+      <div className="px-5 pb-2">
+        <div
+          className="rounded-[14px] px-5 py-5"
+          style={{ background: '#F0EDE5', border: '1px solid #DDD4C6' }}
+        >
+          <h2
+            className="text-[14px] font-bold mb-3"
+            style={{ color: '#171717' }}
+          >
+            まずは、失敗から探すのがおすすめ
+          </h2>
+          <p
+            className="text-[13px] leading-relaxed"
+            style={{ color: '#3A3A3A' }}
+          >
+            F値や露出がまだ分からなくても大丈夫。<br />
+            「写真が暗い」「背景がボケない」「ピントが合わない」など、困っていることから復習できます。
+          </p>
+        </div>
+      </div>
+
+      {/* ── こんな時に見る ── */}
+      <div className="px-5 pb-2">
+        <div
+          className="flex items-center gap-3 mb-4"
+          style={{ borderBottom: '1px solid #DDD4C6', paddingBottom: '12px' }}
+        >
+          <p
+            className="text-[10px] font-bold tracking-[0.15em] uppercase"
+            style={{ color: '#7A7168' }}
+          >
+            失敗から探す
+          </p>
+        </div>
+        <p
+          className="text-[12px] leading-relaxed mb-4"
+          style={{ color: '#8B8270' }}
+        >
+          写真が暗い、ブレる、ボケない。<br />
+          まずは困っていることから探せます。
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {[
+            { label: '写真が暗い', id: 'dark-photo-trouble' },
+            { label: '顔が暗い', id: 'dark-face-trouble' },
+            { label: 'ピントが合わない', id: 'focus-trouble' },
+            { label: '背景がボケない', id: 'background-blur-trouble' },
+            { label: 'ブレる', id: 'camera-shake-trouble' },
+          ].map(({ label, id }) => (
+            <a
+              key={id}
+              href={`/lessons/${id}`}
+              className="inline-block px-4 py-2 rounded-full text-[12px] font-medium transition-all active:scale-95 select-none"
+              style={{
+                background: '#F8F7F4',
+                border: '1px solid #DDD4C6',
+                color: '#6F4E2E',
+              }}
+            >
+              {label}
+            </a>
+          ))}
         </div>
       </div>
 
@@ -305,14 +369,15 @@ export default function Home() {
             className="text-[10px] font-bold tracking-[0.15em] uppercase"
             style={{ color: '#7A7168' }}
           >
-            言葉が分かる時は検索
+            言葉を思い出したい時は検索
           </p>
         </div>
         <p
           className="text-[12px] leading-relaxed mb-3"
           style={{ color: '#8B8270' }}
         >
-          F値、露出、ピント、逆光など、気になる言葉がある時は検索してみてください。
+          F値、露出、ピント、逆光など、授業で出てきた言葉をあとから確認できます。<br />
+          「写真が暗い」「背景がボケない」などの困りごとでも探せます。
         </p>
         <SearchBar />
         <p

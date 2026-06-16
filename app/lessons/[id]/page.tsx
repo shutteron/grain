@@ -137,6 +137,25 @@ export default async function LessonPage({
             {lesson.summary}
           </p>
         </div>
+
+        {/* まずここだけ読めばOK */}
+        <div
+          className="rounded-[12px] px-4 py-4 mt-4"
+          style={{ background: '#F8F7F4', border: '1px solid #E5E0D8' }}
+        >
+          <p
+            className="text-[10px] font-bold tracking-[0.12em] uppercase mb-2"
+            style={{ color: '#C4B8A8' }}
+          >
+            まずここだけ読めばOK
+          </p>
+          <p
+            className="text-[13px] leading-relaxed"
+            style={{ color: '#3A3A3A' }}
+          >
+            {lesson.beginnerExplanation.split('\n\n')[0]}
+          </p>
+        </div>
       </div>
 
       {/* ── 本文 ── */}
@@ -211,7 +230,7 @@ export default async function LessonPage({
               className="text-[10px] font-bold tracking-[0.1em] uppercase mb-3"
               style={{ color: '#C4A870' }}
             >
-              Field Note
+              プロのワンポイント
             </p>
             <div className="flex flex-col gap-3">
               {lesson.junichiNote.split('\n\n').map((para, i) => (
