@@ -146,30 +146,32 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── 検索 ── */}
-      <div className="px-5">
-        <SearchBar />
+      {/* ── まず読む3つ ── */}
+      <div className="px-5 pb-2">
+        <div
+          className="flex items-center gap-3 mb-4"
+          style={{ borderBottom: '1px solid #DDD4C6', paddingBottom: '12px' }}
+        >
+          <p
+            className="text-[10px] font-bold tracking-[0.15em] uppercase"
+            style={{ color: '#7A7168' }}
+          >
+            まず読む3つ
+          </p>
+        </div>
         <p
-          className="text-[12px] leading-relaxed mt-3 mb-3"
+          className="text-[12px] leading-relaxed mb-4"
           style={{ color: '#8B8270' }}
         >
-          写真が暗い、ピントが合わない、背景がボケないなど、困ったことや専門用語で検索できます。
+          何から見ればいいか迷ったら、まずこの3つだけで大丈夫です。
         </p>
-        <div className="flex flex-wrap gap-2">
-          {['写真が暗い', '背景がボケない', 'ピントが合わない', '顔が暗い', 'ブレる', 'F値', '露出', 'ストロボ'].map((term) => (
-            <a
-              key={term}
-              href={`/search?q=${encodeURIComponent(term)}`}
-              className="inline-block px-3 py-1.5 rounded-full text-[11px] font-medium transition-all active:scale-95"
-              style={{
-                background: '#F0EDE5',
-                color: '#7A7168',
-                border: '1px solid #DDD4C6',
-              }}
-            >
-              {term}
-            </a>
-          ))}
+        <div className="flex flex-col gap-2.5">
+          {['camera-auto-graduate', 'exposure-basic', 'dark-photo-trouble']
+            .map((id) => all.find((l) => l.id === id))
+            .filter((l): l is typeof all[0] => l !== undefined)
+            .map((l) => (
+              <LessonCard key={l.id} lesson={l} />
+            ))}
         </div>
       </div>
 
@@ -217,8 +219,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── まず読む3つ ── */}
-      <div className="px-5 pb-2">
+      {/* ── 検索 ── */}
+      <div className="px-5">
         <div
           className="flex items-center gap-3 mb-4"
           style={{ borderBottom: '1px solid #DDD4C6', paddingBottom: '12px' }}
@@ -227,22 +229,37 @@ export default function Home() {
             className="text-[10px] font-bold tracking-[0.15em] uppercase"
             style={{ color: '#7A7168' }}
           >
-            まず読む3つ
+            言葉が分かる時は検索
           </p>
         </div>
         <p
-          className="text-[12px] leading-relaxed mb-4"
+          className="text-[12px] leading-relaxed mb-3"
           style={{ color: '#8B8270' }}
         >
-          何から見ればいいか迷ったら、まずこの3つだけで大丈夫です。
+          F値、露出、ピント、逆光など、気になる言葉がある時は検索してみてください。
         </p>
-        <div className="flex flex-col gap-2.5">
-          {['camera-auto-graduate', 'exposure-basic', 'dark-photo-trouble']
-            .map((id) => all.find((l) => l.id === id))
-            .filter((l): l is typeof all[0] => l !== undefined)
-            .map((l) => (
-              <LessonCard key={l.id} lesson={l} />
-            ))}
+        <SearchBar />
+        <p
+          className="text-[12px] leading-relaxed mt-3 mb-3"
+          style={{ color: '#8B8270' }}
+        >
+          初心者向けの検索例：
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {['写真が暗い', '背景がボケない', 'ピントが合わない', '顔が暗い', 'ブレる', 'F値', '露出', 'ストロボ'].map((term) => (
+            <a
+              key={term}
+              href={`/search?q=${encodeURIComponent(term)}`}
+              className="inline-block px-3 py-1.5 rounded-full text-[11px] font-medium transition-all active:scale-95"
+              style={{
+                background: '#F0EDE5',
+                color: '#7A7168',
+                border: '1px solid #DDD4C6',
+              }}
+            >
+              {term}
+            </a>
+          ))}
         </div>
       </div>
 
