@@ -200,9 +200,9 @@ export default async function LessonPage({
 
         <Divider />
 
-        {/* じゅんいちさんの現場メモ */}
+        {/* 撮影現場メモ */}
         <section className="px-5 py-7">
-          <SLabel>じゅんいちさんの現場メモ</SLabel>
+          <SLabel>撮影現場メモ</SLabel>
           <div
             className="rounded-[14px] px-5 py-5"
             style={{ background: '#FDFAF4', border: '1px solid #EDE4D0' }}
