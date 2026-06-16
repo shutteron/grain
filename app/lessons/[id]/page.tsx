@@ -317,17 +317,19 @@ export default async function LessonPage({
             </div>
           ) : (
             <div
-              className="rounded-[14px] px-4 py-6 text-center"
+              className="rounded-[14px] px-4 py-5 text-center"
               style={{
-                background: '#FAFAF8',
+                background: 'transparent',
                 border: '1px solid #E5E0D8',
               }}
             >
               <p
-                className="text-[13px] leading-relaxed"
+                className="text-[12px] leading-relaxed"
                 style={{ color: '#B0A898' }}
               >
-                ここに作例写真を追加予定です。
+                作例写真は準備中です。<br />
+                この教材では、あとから比較写真を<br />
+                追加していきます。
               </p>
             </div>
           )}
