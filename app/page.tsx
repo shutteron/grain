@@ -219,6 +219,82 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ── レベルから復習する ── */}
+      <div className="px-5 pb-2">
+        <div
+          className="flex items-center gap-3 mb-4"
+          style={{ borderBottom: '1px solid #DDD4C6', paddingBottom: '12px' }}
+        >
+          <p
+            className="text-[10px] font-bold tracking-[0.15em] uppercase"
+            style={{ color: '#7A7168' }}
+          >
+            レベルから復習する
+          </p>
+        </div>
+        <p
+          className="text-[12px] leading-relaxed mb-4"
+          style={{ color: '#8B8270' }}
+        >
+          今の自分に近いレベルから、授業の内容を見返せます。
+        </p>
+
+        {/* 初級 */}
+        <div className="mb-4 rounded-[12px] px-4 py-4" style={{ background: '#FFFFFF', border: '1px solid #E5E0D8' }}>
+          <h3 className="text-[14px] font-bold mb-2" style={{ color: '#171717' }}>
+            初級：まずは失敗から
+          </h3>
+          <p className="text-[12px] leading-relaxed mb-3" style={{ color: '#8B8270' }}>
+            写真が暗い、ブレる、ピントが合わない。<br />
+            まずは困っていることから覚えれば大丈夫です。
+          </p>
+          <div className="flex flex-col gap-2">
+            {['camera-auto-graduate', 'photo-intention', 'dark-photo-trouble', 'focus-trouble', 'camera-shake-trouble', 'background-blur-trouble']
+              .map((id) => all.find((l) => l.id === id))
+              .filter((l): l is typeof all[0] => l !== undefined)
+              .map((l) => (
+                <LessonCard key={l.id} lesson={l} />
+              ))}
+          </div>
+        </div>
+
+        {/* 中級 */}
+        <div className="mb-4 rounded-[12px] px-4 py-4" style={{ background: '#FFFFFF', border: '1px solid #E5E0D8' }}>
+          <h3 className="text-[14px] font-bold mb-2" style={{ color: '#171717' }}>
+            中級：設定を自分で選ぶ
+          </h3>
+          <p className="text-[12px] leading-relaxed mb-3" style={{ color: '#8B8270' }}>
+            F値、シャッタースピード、ISO、露出補正などを使って、写真の見え方を自分で決めていきます。
+          </p>
+          <div className="flex flex-col gap-2">
+            {['exposure-basic', 'aperture-basic', 'shutter-speed-basic', 'iso-basic', 'exposure-compensation-basic', 'white-balance-basic', 'light-and-shadow-basic', 'light-direction-basic']
+              .map((id) => all.find((l) => l.id === id))
+              .filter((l): l is typeof all[0] => l !== undefined)
+              .map((l) => (
+                <LessonCard key={l.id} lesson={l} />
+              ))}
+          </div>
+        </div>
+
+        {/* 上級 */}
+        <div className="mb-4 rounded-[12px] px-4 py-4" style={{ background: '#FFFFFF', border: '1px solid #E5E0D8' }}>
+          <h3 className="text-[14px] font-bold mb-2" style={{ color: '#171717' }}>
+            上級：現場で判断する
+          </h3>
+          <p className="text-[12px] leading-relaxed mb-3" style={{ color: '#8B8270' }}>
+            光、測光、ストロボ、ダイナミックレンジなど、撮影現場での判断に使う内容です。
+          </p>
+          <div className="flex flex-col gap-2">
+            {['metering-mode-basic', 'gray-card-18-basic', 'dynamic-range-basic', 'strobe-purpose', 'clip-on-strobe-basic', 'dark-face-trouble']
+              .map((id) => all.find((l) => l.id === id))
+              .filter((l): l is typeof all[0] => l !== undefined)
+              .map((l) => (
+                <LessonCard key={l.id} lesson={l} />
+              ))}
+          </div>
+        </div>
+      </div>
+
       {/* ── 検索 ── */}
       <div className="px-5">
         <div
