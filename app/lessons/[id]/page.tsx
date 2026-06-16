@@ -155,31 +155,38 @@ export default function LessonPage({
           >
             まずここだけ読めばOK
           </p>
-          <p
-            className="text-[13px] leading-relaxed"
-            style={{ color: '#3A3A3A' }}
-          >
-            {lesson.beginnerExplanation.split('\n\n')[0]}
-          </p>
+          <div className="flex flex-col gap-2">
+            {lesson.beginnerExplanation.split('\n\n').slice(0, lesson.id === 'iso-basic' ? 2 : 1).map((para, i) => (
+              <p
+                key={i}
+                className="text-[13px] leading-relaxed"
+                style={{ color: '#3A3A3A' }}
+              >
+                {para}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* ── 本文 ── */}
       <div className="flex flex-col">
 
-        {/* まず何を覚える？ */}
+        {/* まず何を覚える？ or もっと詳しく知りたい人へ */}
         <section className="px-5 py-7">
-          <SLabel>まず何を覚える？</SLabel>
+          <SLabel>{lesson.id === 'iso-basic' ? 'もっと詳しく知りたい人へ' : 'まず何を覚える？'}</SLabel>
           {isBeginnerLesson && lesson.beginnerExplanation.split('\n\n').length > 1 ? (
             <div>
-              <div className="flex flex-col gap-3 mb-4">
-                <p
-                  className="text-[13px] leading-[1.8]"
-                  style={{ color: '#3A3A3A' }}
-                >
-                  {lesson.beginnerExplanation.split('\n\n')[0]}
-                </p>
-              </div>
+              {lesson.id !== 'iso-basic' && (
+                <div className="flex flex-col gap-3 mb-4">
+                  <p
+                    className="text-[13px] leading-[1.8]"
+                    style={{ color: '#3A3A3A' }}
+                  >
+                    {lesson.beginnerExplanation.split('\n\n')[0]}
+                  </p>
+                </div>
+              )}
               {expandedSection === 'beginner-explanation' && (
                 <div className="flex flex-col gap-3 mb-4">
                   {lesson.beginnerExplanation.split('\n\n').slice(1).map((para, i) => (
@@ -193,22 +200,37 @@ export default function LessonPage({
                   ))}
                 </div>
               )}
-              <button
-                onClick={() =>
-                  setExpandedSection(
-                    expandedSection === 'beginner-explanation' ? null : 'beginner-explanation'
-                  )
-                }
-                className="text-[12px] font-semibold px-4 py-2 rounded-[8px] transition-colors"
-                style={{
-                  background: '#F0EBE5',
-                  color: '#7A6040',
-                }}
-              >
-                {expandedSection === 'beginner-explanation'
-                  ? '閉じる'
-                  : 'もっと詳しく知りたい人へ'}
-              </button>
+              {lesson.id === 'iso-basic' && expandedSection !== 'beginner-explanation' && (
+                <div className="flex flex-col gap-3 mb-4">
+                  {lesson.beginnerExplanation.split('\n\n').slice(2).map((para, i) => (
+                    <p
+                      key={i}
+                      className="text-[13px] leading-[1.8]"
+                      style={{ color: '#3A3A3A' }}
+                    >
+                      {para}
+                    </p>
+                  ))}
+                </div>
+              )}
+              {(lesson.id !== 'iso-basic' || expandedSection === 'beginner-explanation') && (
+                <button
+                  onClick={() =>
+                    setExpandedSection(
+                      expandedSection === 'beginner-explanation' ? null : 'beginner-explanation'
+                    )
+                  }
+                  className="text-[12px] font-semibold px-4 py-2 rounded-[8px] transition-colors"
+                  style={{
+                    background: '#F0EBE5',
+                    color: '#7A6040',
+                  }}
+                >
+                  {expandedSection === 'beginner-explanation'
+                    ? '閉じる'
+                    : 'もっと詳しく知りたい人へ'}
+                </button>
+              )}
             </div>
           ) : (
             <div className="flex flex-col gap-3">
@@ -225,25 +247,29 @@ export default function LessonPage({
           )}
         </section>
 
-        <Divider />
+        {lesson.id !== 'iso-basic' && (
+          <>
+            <Divider />
 
-        {/* 現場ではどう使う？ */}
-        <section className="px-5 py-7">
-          <SLabel>現場ではどう使う？</SLabel>
-          <div className="flex flex-col gap-3">
-            {lesson.fieldUse.split('\n\n').map((para, i) => (
-              <p
-                key={i}
-                className="text-[13px] leading-[1.8]"
-                style={{ color: '#3A3A3A' }}
-              >
-                {para}
-              </p>
-            ))}
-          </div>
-        </section>
+            {/* 現場ではどう使う？ */}
+            <section className="px-5 py-7">
+              <SLabel>現場ではどう使う？</SLabel>
+              <div className="flex flex-col gap-3">
+                {lesson.fieldUse.split('\n\n').map((para, i) => (
+                  <p
+                    key={i}
+                    className="text-[13px] leading-[1.8]"
+                    style={{ color: '#3A3A3A' }}
+                  >
+                    {para}
+                  </p>
+                ))}
+              </div>
+            </section>
 
-        <Divider />
+            <Divider />
+          </>
+        )}
 
         {/* よくある失敗 */}
         <section className="px-5 py-7">
@@ -480,6 +506,27 @@ export default function LessonPage({
                     </p>
                   ))}
                 </div>
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* 現場ではどう使う？（iso-basic のみ下部に表示） */}
+        {lesson.id === 'iso-basic' && (
+          <>
+            <Divider />
+            <section className="px-5 py-7">
+              <SLabel>現場ではどう使う？</SLabel>
+              <div className="flex flex-col gap-3">
+                {lesson.fieldUse.split('\n\n').map((para, i) => (
+                  <p
+                    key={i}
+                    className="text-[13px] leading-[1.8]"
+                    style={{ color: '#3A3A3A' }}
+                  >
+                    {para}
+                  </p>
+                ))}
               </div>
             </section>
           </>
