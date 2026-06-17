@@ -335,19 +335,25 @@ export const lessons: Lesson[] = [
     relatedIds: ["aperture-basic", "focal-length-basic", "portrait-basic"],
     imageExamples: [
       {
-        title: "背景がボケていない状態",
-        description: "被写体が遠く、背景も近い状態です。背景も含めて全体が見えますが、主役が目立ちません",
-        beforeImage: "/images/examples/background-blur-trouble-no-blur.jpg"
-      },
-      {
-        title: "被写体に近づいた写真",
-        description: "同じレンズでも被写体に近づくと、背景がボケやすくなります。主役が引き立ちます",
-        beforeImage: "/images/examples/background-blur-trouble-close.jpg"
-      },
-      {
-        title: "背景を遠ざけた写真",
-        description: "被写体の距離は変わらず、背景を遠ざけると、さらに背景がボケます。ボケの強さは、距離とレンズの組み合わせで決まります",
-        beforeImage: "/images/examples/background-blur-trouble-distance.jpg"
+        title: "距離で背景のボケ方が変わる",
+        description: "背景ボケはF値だけで決まるわけではありません。\n被写体に近づくこと、背景を遠ざけることで、ボケ方は大きく変わります。",
+        images: [
+          {
+            label: "背景がボケない",
+            src: "/images/examples/background-blur-trouble-no-blur.jpg",
+            description: "被写体と背景が近いと、背景があまりボケず、少しごちゃっと見えやすくなります。"
+          },
+          {
+            label: "被写体に近づく",
+            src: "/images/examples/background-blur-trouble-close.jpg",
+            description: "被写体に近づくと、背景が少しボケやすくなります。"
+          },
+          {
+            label: "背景を遠くする",
+            src: "/images/examples/background-blur-trouble-distance.jpg",
+            description: "被写体と背景の距離を離すと、背景が大きくボケやすくなります。"
+          }
+        ]
       },
     ],
   },
